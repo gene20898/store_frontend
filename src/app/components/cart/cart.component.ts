@@ -3,6 +3,7 @@ import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/models/Product';
 import { Router } from '@angular/router';
 import { ConfirmationService } from 'src/app/services/confirmation.service';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -12,6 +13,8 @@ export class CartComponent implements OnInit {
   cart: Product[] = [];
   total: number = 0;
   name: string = "";
+  address: string = "";
+  cred: string = "";
 
   constructor(
     private cartService: CartService,
@@ -25,6 +28,9 @@ export class CartComponent implements OnInit {
   }
 
   amountChange(item: Product):void {
+    if(item.amount == 0){
+      alert("Removed from cart!");
+    }
     this.cartService.updateItem(item);
     this.cart = this.cartService.getCartItems();
     this.totalPrice();

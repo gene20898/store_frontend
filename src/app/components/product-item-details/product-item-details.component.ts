@@ -33,6 +33,7 @@ export class ProductItemDetailsComponent implements OnInit {
 
   addCart(): void{
     this.cartService.updateItem(this.product);
+    alert("Added to cart!");
   }
 
 }
