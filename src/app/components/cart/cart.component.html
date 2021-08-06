@@ -26,13 +26,13 @@
     <div class="cart-panel justify-content-center">
         <form (ngSubmit)="onSubmit()">
             <label class="form-margin" for="name" >Full name</label>
-            <input class="form-control form-margin" type="text" id="name" placeholder="(minimun 3 characters)" style="display: block;">
+            <input class="form-control form-margin" type="text" id="name" name="name" [(ngModel)]="name" placeholder="(minimun 3 characters)">
             <label class="form-margin" for="address">Address</label>
-            <input class="form-control form-margin" type="text" id="name" placeholder="(minimun 6 characters)" style="display: block;">
+            <input class="form-control form-margin" type="text" id="address" placeholder="(minimun 6 characters)">
             <label class="form-margin" for="cred">Credit card number</label>
-            <input class="form-control form-margin" type="text" id="cred" placeholder="(16-digit number)" style="display: block;">
+            <input class="form-control form-margin" type="text" id="cred" placeholder="(16-digit number)">
             <p class="form-margin" >We'll never share your payment details with anyone else.</p>
-            <button class="btn btn-primary" type="submit" style="display: block;">Submit</button>
+            <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
 </div>

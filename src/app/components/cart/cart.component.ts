@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/models/Product';
 import { Router } from '@angular/router';
+import { ConfirmationService } from 'src/app/services/confirmation.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -10,10 +11,12 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
   cart: Product[] = [];
   total: number = 0;
+  name: string = "";
 
   constructor(
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private confirm:ConfirmationService
     ) { }
 
   ngOnInit(): void {
@@ -32,6 +35,7 @@ export class CartComponent implements OnInit {
     this.total = parseFloat(this.total.toFixed(2));
   }
   onSubmit(): void {
+    this.confirm.confirm(this.name, this.total);
     this.router.navigate(['/confirm']);
   }
 }
