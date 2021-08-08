@@ -30,8 +30,8 @@ export class CartComponent implements OnInit {
   amountChange(item: Product):void {
     if(item.amount == 0){
       alert("Removed from cart!");
+      this.cartService.removeItem(item);
     }
-    this.cartService.updateItem(item);
     this.cart = this.cartService.getCartItems();
     this.totalPrice();
   }

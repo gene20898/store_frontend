@@ -17,7 +17,14 @@ export class ProductItemComponent implements OnInit {
   }
 
   addCart(): void{
-    this.cartService.updateItem(this.product);
+    const inCartProduct = this.cartService.getItemById(this.product.id);
+    if(inCartProduct == undefined){
+      this.product.amount = this.amount;
+      this.cartService.addCart(this.product);
+    }
+    else{
+      inCartProduct.amount += +this.amount;
+    }
     alert("Added to cart!");
   }
 }

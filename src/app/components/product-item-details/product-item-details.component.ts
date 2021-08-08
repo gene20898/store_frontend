@@ -12,6 +12,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductItemDetailsComponent implements OnInit {
   id: number = 1;
   product: Product = new Product();
+  amount: number = 1;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,7 +33,14 @@ export class ProductItemDetailsComponent implements OnInit {
   }
 
   addCart(): void{
-    this.cartService.updateItem(this.product);
+    const inCartProduct = this.cartService.getItemById(this.product.id);
+    if(inCartProduct == undefined){
+      this.product.amount = this.amount;
+      this.cartService.addCart(this.product);
+    }
+    else{
+      inCartProduct.amount += +this.amount;
+    }
     alert("Added to cart!");
   }
 
