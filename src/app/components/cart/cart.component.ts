@@ -3,7 +3,6 @@ import { CartService } from 'src/app/services/cart.service';
 import { Product } from 'src/app/models/Product';
 import { Router } from '@angular/router';
 import { ConfirmationService } from 'src/app/services/confirmation.service';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
